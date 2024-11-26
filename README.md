@@ -9,7 +9,7 @@ It's open-source: anyone has the opportunity to participate in developing the en
 ## Initialize repository
 `git submodule update --init --recursive`
 
-## Vcpkg seup
+## Vcpkg setup
 
 In any other folder, say `c:\tools`, clone vcpkg repository:
 `git clone https://github.com/microsoft/vcpkg`
@@ -19,8 +19,8 @@ Run bootstrap here:
 Add enviroment variable
 `VCPKG_ROOT=c:\tools\vcpkg`
 
-After any `vcpkg.json` update (In Nau root folder) clean build is recommended. 
-Save all changes!!! and do git clean -d -x -f
+After any `vcpkg.json` update (in the Nau root folder), a clean build is recommended. 
+Make sure to save all of your changes, and then run this command to clean the local git tree: git clean -d -x -f
 
 ## Configure
 
@@ -40,7 +40,7 @@ or (optional) any other build
 
 
 ## Build mode / Install
-Install prebuild Engine in `output` folder
+Install a previously built Engine in the `output` folder:
 
 `cmake --install build\win_vs2022_x64 --config=Debug`
 
