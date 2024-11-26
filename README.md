@@ -1,4 +1,4 @@
-# Nau Engine
+# Nau engine.
 
 ## Initialize repository
 `git submodule update --init --recursive`

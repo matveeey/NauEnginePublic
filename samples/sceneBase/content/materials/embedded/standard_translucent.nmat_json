@@ -1,0 +1,64 @@
+{
+  "name": "standard_translucent",
+
+  "pipelines": {
+
+    "default": {
+
+      "properties": {
+        "color": [
+          1.0,
+          0.0,
+          1.0,
+          0.5
+        ],
+
+        "albedoTex": "asset:/content/textures/rusted_pbr/rusted_albedo_ao.png",
+        "normalTex": "asset:/content/textures/rusted_pbr/rusted_normals.png",
+        "metalRoughnessAoTex": "asset:/content/textures/rusted_pbr/rusted_metallic_roughness.png"
+      },
+
+      "shaders": [
+        "file:/res/shaders/cache/shader_cache.nsbc+[standard_translucent.vs.vsmain]",
+        "file:/res/shaders/cache/shader_cache.nsbc+[standard_translucent.ps.psmain]"
+      ],
+
+      "cullMode": "CounterClockwise",
+      "depthMode": "ReadOnly",
+      "blendMode": "Translucent"
+    },
+
+
+    "instanced": {
+
+      "properties": {
+        "color": [
+          1.0,
+          0.0,
+          1.0,
+          0.5
+        ],
+
+        "instanceBaseID": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+
+        "albedoTex": "asset:/content/textures/rusted_pbr/rusted_albedo_ao.png",
+        "normalTex": "asset:/content/textures/rusted_pbr/rusted_normals.png",
+        "metalRoughnessAoTex": "asset:/content/textures/rusted_pbr/rusted_metallic_roughness.png"
+      },
+
+      "shaders": [
+        "file:/res/shaders/cache/shader_cache.nsbc+[standard_translucent.instanced.vs.vsmain]",
+        "file:/res/shaders/cache/shader_cache.nsbc+[standard_translucent.instanced.ps.psmain]"
+      ],
+
+      "cullMode": "CounterClockwise",
+      "depthMode": "ReadOnly",
+      "blendMode": "Translucent"
+    }
+  }
+}
