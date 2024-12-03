@@ -154,7 +154,30 @@
                 "CMAKE_BUILD_TYPE": "Debug",
                 "BUILD_SHARED_LIBS": true
             }
+        },
+        {
+            "name": "linux_ninja_debug",
+            "displayName": "Linux Ninja Debug",
+            "description": "Configure with Ninja generator and Debug build type",
+            "binaryDir": "${sourceDir}/build/linux_ninja_debug",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+            }
+        },
+        {
+            "name": "linux_ninja_release",
+            "displayName": "Linux Ninja Release",
+            "description": "Configure with Ninja generator and Release build type",
+            "binaryDir": "${sourceDir}/build/linux_ninja_release",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+            }
         }
+  
     ],
     "buildPresets": [
         {
@@ -228,6 +251,18 @@
             "displayName": "Ninja ClangCl (Release)",
             "configurePreset": "win_ninja_clangcl",
             "configuration": "Release"
+        },
+        {
+            "name": "build_linux_ninja_debug",
+            "displayName": "Build Linux Ninja Debug",
+            "description": "Build with Ninja generator and Debug build type",
+            "configurePreset": "linux_ninja_debug"
+        },
+        {
+            "name": "build_linux_ninja_release",
+            "displayName": "Build Linux Ninja Release",
+            "description": "Build with Ninja generator and Release build type",
+            "configurePreset": "linux_ninja_release"
         }
     ]
 }
