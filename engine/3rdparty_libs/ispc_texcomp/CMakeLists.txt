@@ -22,16 +22,30 @@ function(add_parser_generator_command targetPath outFilesH outFilesObj grammarFi
         "${targetPath}/${filename}_avx.obj"
     )
 
-    if (NOT Platform_Windows)
-        message (FATAL_ERROR "Please, add support for other development platforms: linux, osx")
+    if (Platform_Windows)
+        add_custom_command(
+            OUTPUT ${expectedOutput}
+            COMMAND ${parentPath}/ISPC/win/ispc_gen.cmd -h "${targetPath}/${filename}_ispc.h" -o "${targetPath}/${filename}.obj" -O2 --pic --opt=fast-math --woff --target=sse2,sse4,avx,avx2 ${grammarFile}
+            DEPENDS ${grammarFile}
+            VERBATIM
+        )
+    elseif (Platform_Linux)
+        add_custom_command(
+            OUTPUT ${expectedOutput}
+            COMMAND ispc -h "${targetPath}/${filename}_ispc.h" -o "${targetPath}/${filename}.obj" -O2 --pic --opt=fast-math --woff --target=sse2,sse4,avx,avx2 ${grammarFile}
+            DEPENDS ${grammarFile}
+            VERBATIM
+        )
+    elseif (Platform_OSX)
+        add_custom_command(
+            OUTPUT ${expectedOutput}
+            COMMAND ispc -h "${targetPath}/${filename}_ispc.h" -o "${targetPath}/${filename}.obj" -O2 --pic --opt=fast-math --woff --target=sse2,sse4,avx,avx2 ${grammarFile}
+            DEPENDS ${grammarFile}
+            VERBATIM
+        )
+    else()
+        message(FATAL_ERROR "Unsupported platform. Please add support for your platform.")
     endif()
-
-    add_custom_command(
-        OUTPUT ${expectedOutput}
-        COMMAND ${parentPath}/ISPC/win/ispc_gen.cmd -h "${targetPath}/${filename}_ispc.h" -o "${targetPath}/${filename}.obj" -O2 --pic --opt=fast-math --woff --target=sse2,sse4,avx,avx2 ${grammarFile}
-        DEPENDS ${grammarFile}
-        VERBATIM
-    )
 
     set(${outFilesH} ${${outFilesH}}
         "${targetPath}/${filename}_ispc.h"
